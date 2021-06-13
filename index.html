@@ -1,13 +1,32 @@
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale1.0">
-    <title>Document</title>
-</head>
- <body>
-    <h1>LastNoth.github.io</h1>
-    <p>Lorem um dolor sit amet consectetur adipisicing elit. Dicta alias voluptate, distinctio ab quos nesciunt eos consequatur aut magni veritatis fugit dolorem recusandae cum numquam praesentium vel! Laborum, aperiam repellat!</p>
-    <p>Lorem ipm, dolor sit amet consectetur adipisicing elit. Similique facere officia perferendis nesciunt excepturi quis accusamus, nisi quaerat, atque vel cupiditate reprehenderit velit ratione quas quos, alias animi aut dolores!</p>
-    <p>Lorem ium dolor sit amet consectetur adipisicing elit. Eum quos in minus voluptatum? Magni excepturi, doloremque modi odit quo repudiandae repellat odio! Inventore repellat eius error doloribus nihil incidunt neque!</p>
-</body>
+    <title>LastNoth.github.io</title>
+
+	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+	<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+  </head>
+
+  <body>
+
+	<button onclick="login()">Login with Metamask</button>
+
+	<script>
+		Moralis.initialize("Gv5Amk7Y5U2tceVtSaMBci32oP87CYvq2TQPVZdH"); // Application id from moralis.io
+		Moralis.serverURL = "https://jdxzip3cmiqf.moralis.io:2053/server"; //Server url from moralis.io
+	
+		async function login(){
+			console.log("login clicked");
+			var user = await Moralis.Web3.authenticate();
+			if(user){
+				console.log(user);
+				user.set("nickname","TESTONE");
+				user.set("fav_color","green");
+				user.save();
+			}
+		}
+	
+	</script>
+  </body>
 </html>
